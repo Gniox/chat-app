@@ -20,5 +20,5 @@ $ npm install express@4.15.2
 
 - Then install socket.io.
 ```shell
-npm install socket.io
+$ npm install socket.io
 ```

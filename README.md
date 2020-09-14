@@ -3,5 +3,12 @@ chat app implementation using HTML, CSS, JavaScript, Node.JS, express, and Socke
 
 ## Installation
 install Node.js
-npm install express
+
+
+```shell
+$ npm install express
+```
+
+```shell
 npm install socket.io
+```

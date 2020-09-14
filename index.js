@@ -1,17 +1,29 @@
-var app = require("express")(); //express initializes app to be given to http server
-var http = require("http").createServer(app); //http server
-var io = require("socket.io")(http); //new instance of socket.io, by passing http object
+var express = require('express'); //express initializes app to be given to http server
+var app = express();
+var socket = require('socket.io');
 
 // app.get('/', (req, res) => {                   //define route handler '/' that gets called
 //     res.send('<h1>Hello world</h1>');          //when we hit website home
 // })
 
-app.get("/", (req, res) => {
-  //passover an html file
-  res.sendFile(__dirname + "/public/index.html");
+/*
+The below code allowed for sending of one file, however not an entire directory.
+The structure of this had to be changed to accomodate for the directory
+*/
+// app.get("/", (req, res) => {
+//   //passover an html file
+//   res.sendFile(__dirname + "/public/html");
+// });
+
+var server = app.listen(3000, function() {
+  console.log("listening on *:3000");
 });
 
-io.on("connection", () => {
+app.use(express.static('public')); 
+
+var io = socket(server); //new instance of socket.io, by passing http object
+
+io.on("connect", () => {
   //listen on connection event and log to console
   console.log("a user connected");
   //   socket.on("chat message", (msg) => {
@@ -19,7 +31,7 @@ io.on("connection", () => {
   //   });
 });
 
-http.listen(3000, () => {
-  //make http server listen on port 5500
-  console.log("listening on *:3000");
-});
+// http.listen(3000, () => {
+//   //make http server listen on port 5500
+//   console.log("listening on *:3000");
+// });

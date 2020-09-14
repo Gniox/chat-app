@@ -8,15 +8,15 @@ var io = require("socket.io")(http); //new instance of socket.io, by passing htt
 
 app.get("/", (req, res) => {
   //passover an html file
-  res.sendFile(__dirname + "/index.html");
+  res.sendFile(__dirname + "/public/index.html");
 });
 
-io.on("connection", (socket) => {
+io.on("connection", () => {
   //listen on connection event and log to console
-  //   console.log("a user connected");
-  socket.on("chat message", (msg) => {
-    io.emit("chat message", msg);
-  });
+  console.log("a user connected");
+  //   socket.on("chat message", (msg) => {
+  //     io.emit("chat message", msg);
+  //   });
 });
 
 http.listen(3000, () => {

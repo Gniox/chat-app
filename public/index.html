@@ -5,7 +5,8 @@
     <title>Socket.IO chat</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="/socket.io/socket.io.js"></script>
-    <script src="chat.js"></script>
+    <script src="chat.js" async></script>
+    <!-- <script src="enterForSubmit.js" async></script> -->
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body id="body">
@@ -23,29 +24,28 @@
       <div class="col-4 col-m-25 blue">
         <!-- where the chats will be located -->
         <ul class="yellow">
-          <li>Hello</li>
-          <li>There</li>
+          <!-- <li>Hello</li>
+          <li>There</li> -->
         </ul>
       </div>
       <!-- main chat -->
       <div class="col-8 col-m-75 green">
         <!-- where the messages will be displayed -->
         <ul class="yellow" id="messages">
+          <!-- <li>Howdy</li>
           <li>Howdy</li>
           <li>Howdy</li>
           <li>Howdy</li>
           <li>Howdy</li>
           <li>Howdy</li>
-          <li>Howdy</li>
-          <li>Howdy</li>
+          <li>Howdy</li> -->
         </ul>
         <!-- where to input text for chat -->
         <form action="" class="col-8 col-m-75 row-1">
           <!-- chat input bar -->
           <div class="input row-15">
-            <input class="col-9" id="m" autocomplete="off" /><button>
-              Send
-            </button>
+            <input class="col-9" id="m" autocomplete="off" />
+            <input type="button" onclick="submitMessage()" value="Send" />
           </div>
         </form>
       </div>

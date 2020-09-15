@@ -1,1 +1,7 @@
-var socket = io.connect("http://localhost:3000:");
+const socket = io();
+
+const item = document.getElementById("body");
+
+socket.on("connect", () => {
+  console.log("this should be the body " + item);
+});

@@ -48,8 +48,12 @@
 } */
 
 /* for mobile phones: */
-[class*="col-"] {
-  width: 100%;
+.col-m-25 {
+  width: 25%;
+}
+
+.col-m-75 {
+  width: 75%;
 }
 
 @media only screen and (min-width: 600px) {

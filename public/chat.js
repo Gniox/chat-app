@@ -7,8 +7,10 @@ document.getElementById("m").addEventListener("keydown", function (event) {
 });
 
 socket.on('chat message', function(msg) {
-  message = document.createElement('li').innerHTML = msg;
+  let message = document.createElement('li');
+  message.appendChild(document.createTextNode(msg));
   document.getElementById('messages').append(message);
+  document
 })
 
 function submitMessage() {

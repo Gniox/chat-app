@@ -1,6 +1,8 @@
-var express = require('express'); //express initializes app to be given to http server
+var express = require("express"); //express initializes app to be given to http server
 var app = express();
-var socket = require('socket.io');
+var port = process.env.PORT || 3000;
+var http = require("http").Server(app);
+var io = require("socket.io")(http);
 
 // app.get('/', (req, res) => {                   //define route handler '/' that gets called
 //     res.send('<h1>Hello world</h1>');          //when we hit website home
@@ -15,24 +17,23 @@ The structure of this had to be changed to accomodate for the directory
 //   res.sendFile(__dirname + "/public/html");
 // });
 
-var server = app.listen(3000, function() {
-  console.log("listening on *:3000");
-});
+app.use(express.static("public"));
 
-app.use(express.static('public')); 
-
-var io = socket(server); //new instance of socket.io, by passing http object
+// var io = socket(server); //new instance of socket.io, by passing http object
 
 io.on("connect", (socket) => {
   //listen on connection event and log to console
   console.log("a user connected");
-  socket.on('disconnect', () => {
-    console.log('user disconnected');
+  socket.on("disconnect", () => {
+    console.log("user disconnected");
   });
-  //   socket.on("chat message", (msg) => {
-  //     io.emit("chat message", msg);
-  //   });
+  socket.on("chat message", (msg) => {
+    io.emit("chat message", msg);
+    // console.log("message: ", msg);
+  });
 });
+
+exports.server = http.listen(port);
 
 // http.listen(3000, () => {
 //   //make http server listen on port 5500

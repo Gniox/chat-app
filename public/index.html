@@ -5,9 +5,42 @@
     <title>Socket.IO chat</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="/socket.io/socket.io.js"></script>
-  </head>
-  <body>
-    <h1>Hello World</h1>
     <script src="chat.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body id="body">
+    <div class="yellow row row-1">
+      <div class="purple col-4"></div>
+      <div class="col-8 blue">
+        <h1>Hello</h1>
+      </div>
+    </div>
+
+    <div class="row purple row-14">
+      <div class="col-4 blue">
+        <ul class="yellow">
+          <li>Hello</li>
+          <li>There</li>
+        </ul>
+      </div>
+      <div class="col-8 green">
+        <ul class="yellow" id="messages">
+          <li>Howdy</li>
+          <li>Howdy</li>
+          <li>Howdy</li>
+          <li>Howdy</li>
+          <li>Howdy</li>
+          <li>Howdy</li>
+          <li>Howdy</li>
+        </ul>
+        <form action="" class="col-8 row-1">
+          <div class="input row-15">
+            <input class="col-8 col-s-1" id="m" autocomplete="off" /><button>
+              Send
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
   </body>
 </html>

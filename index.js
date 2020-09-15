@@ -23,9 +23,12 @@ app.use(express.static('public'));
 
 var io = socket(server); //new instance of socket.io, by passing http object
 
-io.on("connect", () => {
+io.on("connect", (socket) => {
   //listen on connection event and log to console
   console.log("a user connected");
+  socket.on('disconnect', () => {
+    console.log('user disconnected');
+  });
   //   socket.on("chat message", (msg) => {
   //     io.emit("chat message", msg);
   //   });

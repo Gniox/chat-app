@@ -75,6 +75,14 @@ li {
   list-style-type: none;
 }
 
+label {
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 13px;
+  color: black;
+}
+
 @media only screen and (min-width: 600px) {
   /* For desktop: */
   .col-1 {
@@ -206,7 +214,7 @@ form input {
   margin-right: 0.5%;
   /* align-items: center; */
   border: 5px solid green;
-  /* flex-wrap: 1; */
+  flex-wrap: wrap;
 }
 
 /* form button {
@@ -232,9 +240,15 @@ form input {
   display: flex;
 }
 
-.input {
-  /* these three center an item in flex */
+.input-container {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.input-item {
+  /* these three center an item in flex */
+  display: flex;
+  /* justify-content: center;
+  align-items: center; */
 }

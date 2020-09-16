@@ -25,6 +25,7 @@ document.getElementById("name").addEventListener("keydown", function (event) {
 
 // socket.on("connect", socket);
 
+//when name has been entered
 socket.on("entered", (name) => {
   let message = document.createElement("li");
   message.appendChild(
@@ -33,6 +34,7 @@ socket.on("entered", (name) => {
   document.getElementById("messages").append(message);
 });
 
+//when message has been received
 socket.on("chat message", (data) => {
   let message = document.createElement("li");
   let name = data.name + ": ";
@@ -40,6 +42,7 @@ socket.on("chat message", (data) => {
   document.getElementById("messages").append(message);
 });
 
+//when message is being sent
 function submitMessage() {
   if (document.getElementById("name").value == "") {
     alert("Name yourself first.");
@@ -50,6 +53,7 @@ function submitMessage() {
   }
 }
 
+//when submitting name
 function submitName() {
   socket.emit("entered", document.getElementById("name").value);
 }

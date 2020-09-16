@@ -73,6 +73,18 @@ li {
   line-height: 15px;
   color: black;
   list-style-type: none;
+  padding-left: 2%;
+  /* justify-content: left; */
+  /* max-width: 43.5%; */
+  overflow-wrap: break-word;
+  /* float: left; */
+  /* position: relative; */
+}
+
+mark {
+  background: gainsboro;
+  padding-left: 1%;
+  padding-right: 1%;
 }
 
 label {
@@ -215,6 +227,8 @@ form input {
   /* align-items: center; */
   border: 5px solid green;
   flex-wrap: wrap;
+  background: white;
+  overflow-wrap: break-word;
 }
 
 /* form button {
@@ -241,6 +255,7 @@ form input {
 }
 
 .input-container {
+  /* these three center an item in flex */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -251,12 +266,37 @@ form input {
   display: flex;
   /* justify-content: center;
   align-items: center; */
+  flex-wrap: wrap;
 }
 
 .self {
+  /* display: flex; */
   text-align: right;
+  padding-right: 2%;
+  /* left: 0; */
+  /* background: #18A0FB; */
+  /* float: right; */
+  /* max-width: 43.5%; */
+  /* justify-content: right; */
+  overflow-wrap: break-word;
+  
+}
+
+.self mark {
+  background: #18A0FB;
+  padding-left: 1%;
+  padding-right: 1%;
 }
 
 .message-container {
   overflow: auto;
+}
+
+#m {
+  display: block;
+  /* width: 100%; */
+  overflow: hidden;
+  resize: vertical;
+  /* min-height: 40px; */
+  /* line-height: 20px; */
 }

@@ -16,7 +16,10 @@ document.getElementById("name").addEventListener("keydown", function (event) {
 });
 
 document.getElementById("m").addEventListener("focus", function () {
-  socket.emit("typing", document.getElementById("name").value + " is typing");
+  socket.emit(
+    "typing",
+    document.getElementById("name").value + " is typing ..."
+  );
 });
 
 // document.getElementById("name").addEventListener("mouseout", function () {
@@ -32,23 +35,28 @@ document.getElementById("m").addEventListener("focus", function () {
 //when name has been entered
 socket.on("entered", (name) => {
   let message = document.createElement("li");
-  message.appendChild(
-    document.createTextNode(name + " has entered the chat UwU")
-  );
+  message.appendChild(document.createTextNode(name + " has entered the chat UwU"));
+  // message.appendChild(
+  //   document.createTextNode(name + " has entered the chat UwU")
+  // );
   document.getElementById("messages").append(message);
 });
 
 //when message has been received
 socket.on("chat message", (data) => {
   let message = document.createElement("li");
+  let mark = document.createElement("mark");
 
   if (document.getElementById("name").value == data.name) {
-    message.appendChild(document.createTextNode(data.message));
+    mark.appendChild(document.createTextNode(data.message));
+    message.appendChild(mark);
     message.classList.add("self");
     document.getElementById("messages").append(message);
   } else {
     let name = data.name + ": ";
-    message.appendChild(document.createTextNode(name + data.message));
+    mark.appendChild(document.createTextNode(data.message));
+    message.appendChild(document.createTextNode(name));
+    message.appendChild(mark);
     document.getElementById("messages").append(message);
   }
   scrollDown();

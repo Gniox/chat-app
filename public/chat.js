@@ -1,6 +1,6 @@
 const socket = io();
-let prevName = '';
-let curName = '';
+let prevName = "";
+let curName = "";
 let hasName = false;
 
 document.getElementById("m").addEventListener("keydown", function (event) {
@@ -11,7 +11,7 @@ document.getElementById("m").addEventListener("keydown", function (event) {
 
 document.getElementById("name").addEventListener("keydown", function (event) {
   if (event.code === "Enter") {
-    if (document.getElementById("name").value != '') submitName();
+    if (document.getElementById("name").value != "") submitName();
   }
 });
 
@@ -20,8 +20,10 @@ document.getElementById("name").addEventListener("keydown", function (event) {
 //     curName = document.getElementById("name").value;
 //     submitName();
 //   }
-    
+
 // });
+
+// socket.on("connect", socket);
 
 socket.on("entered", (name) => {
   let message = document.createElement("li");
@@ -31,19 +33,19 @@ socket.on("entered", (name) => {
   document.getElementById("messages").append(message);
 });
 
-socket.on("chat message", (msg) => {
+socket.on("chat message", (data) => {
   let message = document.createElement("li");
-  let name = document.getElementById("name").value + ": ";
-  message.appendChild(document.createTextNode(name + msg));
+  let name = data.name + ": ";
+  message.appendChild(document.createTextNode(name + data.message));
   document.getElementById("messages").append(message);
 });
 
 function submitMessage() {
-  if (document.getElementById("name").value == '') {
+  if (document.getElementById("name").value == "") {
     alert("Name yourself first.");
   } else {
     event.preventDefault();
-    socket.emit("chat message", document.getElementById("m").value);
+    socket.emit("chat message", {name: document.getElementById('name').value, message: document.getElementById("m").value});
     document.getElementById("m").value = "";
   }
 }

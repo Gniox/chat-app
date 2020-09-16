@@ -3,7 +3,7 @@ var app = express();
 var port = process.env.PORT || 3000;
 var http = require("http").Server(app);
 var io = require("socket.io")(http);
-
+var user = 1;
 // app.get('/', (req, res) => {                   //define route handler '/' that gets called
 //     res.send('<h1>Hello world</h1>');          //when we hit website home
 // })
@@ -23,9 +23,9 @@ app.use(express.static("public"));
 
 io.on("connect", (socket) => {
   //listen on connection event and log to console
-  console.log("a user connected");
-  socket.on("disconnect", () => {
-    console.log("user disconnected");
+  socket.on("entered", (name) => {
+    io.emit("entered", name);
+    user++;
   });
   socket.on("chat message", (msg) => {
     io.emit("chat message", msg);

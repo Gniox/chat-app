@@ -15,6 +15,10 @@ document.getElementById("name").addEventListener("keydown", function (event) {
   }
 });
 
+document.getElementById("m").addEventListener("focus", function () {
+  socket.emit("typing", document.getElementById("name").value + " is typing");
+});
+
 // document.getElementById("name").addEventListener("mouseout", function () {
 //   if (document.getElementById("name").value != '') {
 //     curName = document.getElementById("name").value;
@@ -50,6 +54,12 @@ socket.on("chat message", (data) => {
   scrollDown();
 });
 
+socket.on("typing", (msg) => {
+  let message = document.createElement("li");
+  message.appendChild(document.createTextNode(msg));
+  document.getElementById("messages").append(message);
+});
+
 //when message is being sent
 function submitMessage() {
   if (document.getElementById("name").value == "") {
@@ -71,6 +81,6 @@ function submitName() {
 
 //scroll down
 function scrollDown() {
-  let chat = document.getElementById('msg-container');
+  let chat = document.getElementById("msg-container");
   chat.scrollTop = chat.scrollHeight;
 }

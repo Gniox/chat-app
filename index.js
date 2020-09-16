@@ -22,14 +22,19 @@ app.use(express.static("public"));
 // var io = socket(server); //new instance of socket.io, by passing http object
 
 io.on("connect", (socket) => {
-  //listen on connection event and log to console
+  //when a name has been entered 
   socket.on("entered", (name) => {
     io.emit("entered", name);
     user++;
   });
+  //when a chat message has been received
   socket.on("chat message", (data) => {
     io.emit("chat message", data);
     // console.log("message: ", msg);
+  });
+  //when cursor is in text field
+  socket.on("typing", (msg) => {
+    io.emit("typing", msg)
   });
 });
 

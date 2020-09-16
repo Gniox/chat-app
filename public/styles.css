@@ -205,7 +205,7 @@ body {
 } */
 
 form {
-  background: red;
+  /* background: red; */
   position: fixed;
   bottom: 0;
 }
@@ -251,4 +251,12 @@ form input {
   display: flex;
   /* justify-content: center;
   align-items: center; */
+}
+
+.self {
+  text-align: right;
+}
+
+.message-container {
+  overflow: auto;
 }

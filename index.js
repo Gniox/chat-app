@@ -27,8 +27,8 @@ io.on("connect", (socket) => {
     io.emit("entered", name);
     user++;
   });
-  socket.on("chat message", (msg) => {
-    io.emit("chat message", msg);
+  socket.on("chat message", (data) => {
+    io.emit("chat message", data);
     // console.log("message: ", msg);
   });
 });

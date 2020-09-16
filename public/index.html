@@ -15,7 +15,7 @@
       <div class="purple col-4 col-m-25"></div>
       <!-- title -->
       <div class="col-8 col-m-75 blue">
-        <h1>Hello</h1>
+        <h1>Chat</h1>
       </div>
     </div>
     <!-- body of app -->
@@ -41,11 +41,19 @@
           <li>Howdy</li> -->
         </ul>
         <!-- where to input text for chat -->
-        <form action="" class="col-8 col-m-75 row-1">
+        <form action="" class="col-8 col-m-75 row-1 input-container">
           <!-- chat input bar -->
-          <div class="input row-15">
-            <input class="col-9" id="m" autocomplete="off" />
-            <input type="button" onclick="submitMessage()" value="Send" />
+          <div class="purple col-8 col-m-75">
+            <div class="input-item blue">
+              <label for="name">Name: </label>
+              <input class="col-5 col-m-75" id="name" autocomplete="off" />
+              <input type="button" onclick="submitName()" value="Send" />
+            </div>
+
+            <div class="input-item row-15 yellow">
+              <input class="col-9 col-m-75" id="m" autocomplete="off" />
+              <input type="button" onclick="submitMessage()" value="Send" />
+            </div>
           </div>
         </form>
       </div>

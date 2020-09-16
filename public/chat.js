@@ -37,9 +37,17 @@ socket.on("entered", (name) => {
 //when message has been received
 socket.on("chat message", (data) => {
   let message = document.createElement("li");
-  let name = data.name + ": ";
-  message.appendChild(document.createTextNode(name + data.message));
-  document.getElementById("messages").append(message);
+
+  if (document.getElementById("name").value == data.name) {
+    message.appendChild(document.createTextNode(data.message));
+    message.classList.add("self");
+    document.getElementById("messages").append(message);
+  } else {
+    let name = data.name + ": ";
+    message.appendChild(document.createTextNode(name + data.message));
+    document.getElementById("messages").append(message);
+  }
+  scrollDown();
 });
 
 //when message is being sent
@@ -48,7 +56,10 @@ function submitMessage() {
     alert("Name yourself first.");
   } else {
     event.preventDefault();
-    socket.emit("chat message", {name: document.getElementById('name').value, message: document.getElementById("m").value});
+    socket.emit("chat message", {
+      name: document.getElementById("name").value,
+      message: document.getElementById("m").value,
+    });
     document.getElementById("m").value = "";
   }
 }
@@ -56,4 +67,10 @@ function submitMessage() {
 //when submitting name
 function submitName() {
   socket.emit("entered", document.getElementById("name").value);
+}
+
+//scroll down
+function scrollDown() {
+  let chat = document.getElementById('msg-container');
+  chat.scrollTop = chat.scrollHeight;
 }

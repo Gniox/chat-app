@@ -3,6 +3,10 @@ let prevName = "";
 let curName = "";
 let hasName = false;
 
+// window.onload = function() {
+//   document.
+// }
+
 document.getElementById("m").addEventListener("keydown", function (event) {
   if (event.code === "Enter") {
     submitMessage();
@@ -11,7 +15,7 @@ document.getElementById("m").addEventListener("keydown", function (event) {
 
 document.getElementById("name").addEventListener("keydown", function (event) {
   if (event.code === "Enter") {
-    if (document.getElementById("name").value != "") submitName();
+    submitName();
   }
 });
 
@@ -35,7 +39,9 @@ document.getElementById("m").addEventListener("focus", function () {
 //when name has been entered
 socket.on("entered", (name) => {
   let message = document.createElement("li");
-  message.appendChild(document.createTextNode(name + " has entered the chat UwU"));
+  message.appendChild(
+    document.createTextNode(name + " has entered the chat UwU")
+  );
   // message.appendChild(
   //   document.createTextNode(name + " has entered the chat UwU")
   // );
@@ -70,9 +76,7 @@ socket.on("typing", (msg) => {
 
 //when message is being sent
 function submitMessage() {
-  if (document.getElementById("name").value == "") {
-    alert("Name yourself first.");
-  } else {
+  if (document.getElementById("m").value != "") {
     event.preventDefault();
     socket.emit("chat message", {
       name: document.getElementById("name").value,
@@ -80,10 +84,15 @@ function submitMessage() {
     });
     document.getElementById("m").value = "";
   }
+  event.preventDefault();
 }
 
 //when submitting name
 function submitName() {
+  event.preventDefault();
+  document.getElementById("popupbox").classList.add("hide");
+  document.getElementById("chatbody").classList.remove("name-overlay");
+  console.log("did you get here");
   socket.emit("entered", document.getElementById("name").value);
 }
 

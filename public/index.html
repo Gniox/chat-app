@@ -11,52 +11,70 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body id="body">
-    <!-- header and title container -->
-    <div class="yellow row row-1">
-      <div class="purple col-4 col-m-25"></div>
-      <!-- title -->
-      <div class="col-8 col-m-75 blue">
-        <h1>Chat</h1>
-      </div>
+    <div class="center-form" id="popupbox">
+      <form action="" class="center effect-all-sides">
+        <div class="center">
+          <label for="name">Name: </label>
+          <input class="col-5 col-m-75" id="name" autocomplete="off" />
+          <input type="button" onclick="submitName()" value="Send" />
+        </div>
+      </form>
     </div>
-    <!-- body of app -->
-    <div class="row purple row-14">
-      <!-- left side of body -->
-      <div class="col-4 col-m-25 blue">
-        <!-- where the chats will be located -->
-        <ul class="yellow">
-          <!-- <li>Hello</li>
-          <li>There</li> -->
-        </ul>
+    <!-- <span>HELLO</span> -->
+    <div class="name-overlay" id="chatbody">
+      <!-- header and title container -->
+      <div class="row row-1 effect-bottom-left">
+        <div class="col-4 col-m-25"></div>
+        <!-- title -->
+        <div class="col-8 col-m-75 effect-bottom-left">
+          <h1>Chat</h1>
+        </div>
       </div>
-      <!-- main chat -->
-      <div class="message-container col-8 col-m-75 green row-14" id="msg-container">
-        <!-- where the messages will be displayed -->
-        <ul class="yellow" id="messages">
-          <!-- <li>Howdy</li>
+      <!-- body of app -->
+      <div class="row row-14">
+        <!-- left side of body -->
+        <div class="col-4 col-m-25 effect-right">
+          <!-- where the chats will be located -->
+          <ul>
+            <!-- <li>Hello</li>
+          <li>There</li> -->
+          </ul>
+        </div>
+        <!-- main chat -->
+        <div
+          class="message-container col-8 col-m-75 row-14 effect2"
+          id="msg-container"
+        >
+          <!-- where the messages will be displayed -->
+          <ul id="messages">
+            <!-- <li>Howdy</li>
           <li>Howdy</li>
           <li>Howdy</li>
           <li>Howdy</li>
           <li>Howdy</li>
           <li>Howdy</li>
           <li>Howdy</li> -->
-        </ul>
-        <!-- where to input text for chat -->
-        <form action="" class="col-8 col-m-75 row-1 input-container">
-          <!-- chat input bar -->
-          <div class="purple col-8 col-m-75">
-            <div class="input-item blue">
+          </ul>
+          <!-- where to input text for chat -->
+          <form
+            action=""
+            class="col-8 col-m-75 row-1 input-container message-form effect-all-sides"
+          >
+            <!-- chat input bar -->
+            <div class="col-8 col-m-75">
+              <!-- <div class="input-item">
               <label for="name">Name: </label>
               <input class="col-5 col-m-75" id="name" autocomplete="off" />
               <input type="button" onclick="submitName()" value="Send" />
-            </div>
+            </div> -->
 
-            <div class="input-item row-15 yellow">
-              <input class="col-8 col-m-75" id="m" autocomplete="off" />
-              <input type="button" onclick="submitMessage()" value="Send" />
+              <div class="input-item row-15">
+                <input class="col-8 col-m-75" id="m" autocomplete="off" />
+                <input type="button" onclick="submitMessage()" value="Send" />
+              </div>
             </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   </body>

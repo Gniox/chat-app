@@ -142,26 +142,26 @@ function scrollDown() {
 
 //takes messages in and breaks them up
 function lineBreak(message) {
-  let i = 0;
-  let numCharSmol = 60;
-  let numCharBig = 90;
+  // let i = 0;
+  // let numCharSmol = 60;
+  // let numCharBig = 90;
 
-  if ((message.length < 60 && screen.width < 600) || message.length < 90)
-    return message;
-  for (i; i < message.length; i++) {
-    if (i >= numCharSmol && message[i] === " " && screen.width < 600) {
-      message = message.slice(0, i) + "<br/>" + message.slice(i);
-      console.log("this is from numsmol: " + i);
-      message.length += 5;
-      numCharSmol *= 2;
-      remainder += 1;
-    } else if (i >= numCharBig && message[i] === " ") {
-      message = message.slice(0, i) + "<br/>" + message.slice(i);
-      console.log("this is from numbig: " + i);
-      message.length += 5;
-      numCharBig *= 2;
-    }
-  }
+  // if ((message.length < 60 && screen.width < 600) || message.length < 90)
+  //   return message;
+  // for (i; i < message.length; i++) {
+  //   if (i >= numCharSmol && message[i] === " " && screen.width < 600) {
+  //     message = message.slice(0, i) + "<br/>" + message.slice(i);
+  //     console.log("this is from numsmol: " + i);
+  //     message.length += 5;
+  //     numCharSmol *= 2;
+  //     remainder += 1;
+  //   } else if (i >= numCharBig && message[i] === " ") {
+  //     message = message.slice(0, i) + "<br/>" + message.slice(i);
+  //     console.log("this is from numbig: " + i);
+  //     message.length += 5;
+  //     numCharBig *= 2;
+  //   }
+  // }
   // console.log("this is the message: " + message);
   return message;
 }

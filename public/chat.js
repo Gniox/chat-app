@@ -17,19 +17,19 @@ let hasName = false;
 //   tx[i].addEventListener("input", OnInput, false);
 // }
 
-document.getElementById("m").addEventListener("keydown", function (event) {
+document.getElementById("m").addEventListener("keydown", function(event) {
   if (event.code === "Enter") {
     submitMessage();
   }
 });
 
-document.getElementById("name").addEventListener("keydown", function (event) {
+document.getElementById("name").addEventListener("keydown", function(event) {
   if (event.code === "Enter") {
     submitName();
   }
 });
 
-document.getElementById("m").addEventListener("focus", function () {
+document.getElementById("m").addEventListener("focus", function() {
   socket.emit(
     "typing",
     document.getElementById("name").value + " is typing ..."
@@ -47,19 +47,24 @@ document.getElementById("m").addEventListener("focus", function () {
 // socket.on("connect", socket);
 
 //when name has been entered
-socket.on("entered", (name) => {
+socket.on("entered", name => {
   let message = document.createElement("li");
+  let container = document.createElement("div");
+
   message.appendChild(
     document.createTextNode(name + " has entered the chat UwU")
   );
   // message.appendChild(
   //   document.createTextNode(name + " has entered the chat UwU")
   // );
-  document.getElementById("messages").append(message);
+  message.classList.add("notification");
+  container.appendChild(message);
+  container.classList.add("message-div");
+  document.getElementById("messages").append(container);
 });
 
 //when message has been received
-socket.on("chat message", (data) => {
+socket.on("chat message", data => {
   let message = document.createElement("li");
   // let mark = document.createElement("mark");
   let brokenMessage = lineBreak(data.message);
@@ -83,10 +88,16 @@ socket.on("chat message", (data) => {
   scrollDown();
 });
 
-socket.on("typing", (msg) => {
+//when someone types in chat
+socket.on("typing", msg => {
   let message = document.createElement("li");
+  let container = document.createElement("div");
+
   message.appendChild(document.createTextNode(msg));
-  document.getElementById("messages").append(message);
+  container.appendChild(message);
+  message.classList.add("notification");
+  container.classList.add("message-div");
+  document.getElementById("messages").append(container);
 });
 
 //when message is being sent
@@ -95,7 +106,7 @@ function submitMessage() {
     event.preventDefault();
     socket.emit("chat message", {
       name: document.getElementById("name").value,
-      message: document.getElementById("m").value,
+      message: document.getElementById("m").value
     });
     document.getElementById("m").value = "";
   }

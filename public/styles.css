@@ -121,6 +121,16 @@ label {
   color: black;
 }
 
+.message-container {
+  /* display: flex; */
+  overflow: auto;
+  max-height: 84vh;
+  margin-left: 2%;
+  margin-right: 2%;
+  padding: 1%;
+  /* display: inline; */
+}
+
 @media only screen and (min-width: 600px) {
   /* For desktop: */
   .col-1 {
@@ -171,6 +181,9 @@ label {
   label {
     font-size: 21px;
   }
+  /* .message-container {
+    max-height: 84vh;
+  } */
 }
 
 .row-1 {
@@ -383,15 +396,6 @@ textarea {
   background: gainsboro;
 } */
 
-.message-container {
-  overflow: auto;
-  max-height: 87vh;
-  margin-left: 2%;
-  margin-right: 2%;
-  padding: 1%;
-  /* display: inline; */
-}
-
 .popup {
   width: 100%;
   height: 100%;
@@ -475,6 +479,8 @@ textarea {
   /* min-height: 40px; */
   /* line-height: 20px; */
 }
+
+
 
 /* #form-m {
   padding-top: 1%;

@@ -17,6 +17,27 @@ let hasName = false;
 //   tx[i].addEventListener("input", OnInput, false);
 // }
 
+// window.onload = function() {
+//   let location = 500;
+
+//   // alert("this is the location of bottom hopefully: " + location);
+//   document
+//     .getElementById("msg-container")
+//     .setAttribute("height", location + "px");
+//   document
+//     .getElementById("messages")
+//     .setAttribute("max-height", location + "px");
+//   // alert(document.getElementById("messages").getAttribute("max-height"));
+// };
+
+// window.addEventListener("resize", () => {
+//   let location = 500;
+//   // console.log("this is the location of bottom hopefully: " + location);
+//   document
+//     .getElementById("messages")
+//     .setAttribute("max-height", location + "px");
+// });
+
 document.getElementById("m").addEventListener("keydown", function(event) {
   if (event.code === "Enter") {
     submitMessage();
@@ -124,7 +145,7 @@ function submitName() {
 
 //scroll down
 function scrollDown() {
-  let chat = document.getElementById("msg-container");
+  let chat = document.getElementById("messages");
   chat.scrollTop = chat.scrollHeight;
 }
 
@@ -165,3 +186,10 @@ function lineBreak(message) {
   // console.log("this is the message: " + message);
   return message;
 }
+
+// function getOffset(el) {
+//   const rect = el.getBoundingClientRect();
+//   return {
+//     top: rect.top + window.scrollY
+//   };
+// }

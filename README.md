@@ -1,16 +1,17 @@
 # chat-app
 - chat app implementation using HTML, CSS, JavaScript, Node.JS, express, and Socket.IO.
 - TODO:
-* ~~broadcast a message to connect users
-* ~~add support for nicknames
-* ~~append message directly as soon as enter is pressed
-* ~~add "{user} is typing" functionality
+* ~~broadcast a message to connect users~~
+* ~~add support for nicknames~~
+* ~~append message directly as soon as enter is pressed~~
+* ~~add "{user} is typing" functionality~~
 * show who's online
-* ~~message when user connects
+* ~~message when user connects~~
 * multiple chats
 * better dynamic resize
 * add private messaging
-* ~~UI/UX design implementation
+* add button to change nickname
+* ~~UI/UX design implementation~~
 
 ## Installation
 - Make sure you have Node.js installed.  You can check by typing in your terminal.

@@ -66,8 +66,7 @@ h1 {
   padding-left: 2%;
 }
 
-li,
-input[type="text"] {
+li {
   font-family: "Roboto", sans-serif;
   font-style: normal;
   font-weight: normal;
@@ -78,6 +77,8 @@ input[type="text"] {
   padding-left: 2%;
   padding-top: 1%;
   padding-bottom: 1%;
+  /* background: #18a0fb; */
+  /* justify-content: left; */
   /* justify-content: left; */
   /* max-width: 43.5%; */
   overflow-wrap: break-word;
@@ -85,14 +86,29 @@ input[type="text"] {
   /* position: relative; */
 }
 
-mark {
+textarea {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 8px;
+  line-height: 15px;
+  color: black;
+  list-style-type: none;
+  padding-left: 2%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  overflow-wrap: break-word;
+}
+
+/* mark {
   background: gainsboro;
   padding-left: 1%;
   padding-right: 1%;
   padding-top: 1%;
   padding-bottom: 1%;
   border-radius: 5px;
-}
+  justify-content: left;
+} */
 
 label {
   font-family: "Noto Sans", sans-serif;
@@ -145,7 +161,7 @@ label {
     line-height: 170.2%;
   }
   li,
-  input[type="text"] {
+  textarea {
     font-size: 13px;
     line-height: 15px;
   }
@@ -232,7 +248,8 @@ body {
   top: 100;
 } */
 
-form input {
+form input,
+textarea {
   margin-right: 0.5%;
   /* align-items: center; */
   /* border: 5px solid green; */
@@ -278,6 +295,7 @@ form input {
   display: flex;
   justify-content: center;
   align-items: center;
+  /* z-index: 10 */
 }
 
 .input-item {
@@ -288,10 +306,10 @@ form input {
   flex-wrap: wrap;
 }
 
-.self {
+.self .other {
   /* display: flex; */
-  text-align: right;
-  padding-right: 2%;
+  /* text-align: right; */
+  /* padding-right: 2%; */
   /* left: 0; */
   /* background: #18A0FB; */
   /* float: right; */
@@ -300,16 +318,51 @@ form input {
   overflow-wrap: break-word;
 }
 
-.self mark {
+/* .self mark {
   background: #18a0fb;
   padding-left: 1%;
   padding-right: 1%;
   padding-top: 1%;
   padding-bottom: 1%;
+} */
+
+/* .message-container-container {
+  display: flex;
+} */
+
+.message-div .self {
+  display: flex;
+  background: #18a0fb;
+  border-radius: 5px;
+  /* margin-right: 40%; */
+  padding-left: 1%;
+  padding-right: 1%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  /* max-width: 60vw; */
+  /* word-wrap: break-word; */
 }
 
+.message-div .other {
+  display: flex;
+  background: gainsboro;
+  border-radius: 5px;
+  /* margin-right: 40%; */
+  padding-left: 1%;
+  padding-right: 1%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  /* max-width: 60vw; */
+  /* word-wrap: break-word; */
+}
+
+/* .message-div {
+  background: gainsboro;
+} */
 .message-container {
   overflow: auto;
+  max-height: 87vh;
+  /* display: inline; */
 }
 
 .popup {
@@ -368,15 +421,6 @@ form input {
   z-index: -1;
 }
 
-#m {
-  display: block;
-  /* width: 100%; */
-  overflow: hidden;
-  resize: vertical;
-  /* min-height: 40px; */
-  /* line-height: 20px; */
-}
-
 .name-overlay {
   /* position: fixed; */
   /* top: 0;
@@ -390,3 +434,17 @@ form input {
   opacity: 1; */
   z-index: 1;
 }
+
+#m {
+  display: block;
+  /* width: 100%; */
+  overflow: hidden;
+  resize: vertical;
+  /* min-height: 40px; */
+  /* line-height: 20px; */
+}
+
+/* #form-m {
+  padding-top: 1%;
+  padding-bottom: 1%;
+} */

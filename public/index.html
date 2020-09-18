@@ -1,3 +1,5 @@
+<!-- TODO: inside of body messages does not scroll properly, other bugs too -->
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -41,12 +43,9 @@
           </ul>
         </div>
         <!-- main chat -->
-        <div
-          class="message-container col-8 col-m-75 row-14 effect2"
-          id="msg-container"
-        >
+        <div class="col-8 col-m-75 effect2" id="msg-container">
           <!-- where the messages will be displayed -->
-          <ul id="messages">
+          <ul class="message-container" id="messages">
             <!-- <li>Howdy</li>
           <li>Howdy</li>
           <li>Howdy</li>
@@ -55,25 +54,28 @@
           <li>Howdy</li>
           <li>Howdy</li> -->
           </ul>
+
           <!-- where to input text for chat -->
-          <form
-            action=""
-            class="col-8 col-m-75 row-1 input-container message-form effect-all-sides"
-          >
-            <!-- chat input bar -->
-            <div class="col-8 col-m-75">
-              <!-- <div class="input-item">
+          <div class="input" id="input-div">
+            <form
+              action=""
+              class="col-8 col-m-75 row-1 input-container message-form effect-all-sides" id="form-m"
+            >
+              <!-- chat input bar -->
+              <div class="col-8 col-m-75">
+                <!-- <div class="input-item">
               <label for="name">Name: </label>
               <input class="col-5 col-m-75" id="name" autocomplete="off" />
               <input type="button" onclick="submitName()" value="Send" />
             </div> -->
 
-              <div class="input-item row-15">
-                <input class="col-8 col-m-75" id="m" autocomplete="off" />
-                <input type="button" onclick="submitMessage()" value="Send" />
+                <div class="input-item row-14">
+                  <textarea class="col-8 col-m-75" id="m" autocomplete="off" ></textarea>
+                  <input type="button" onclick="submitMessage()" value="Send" />
+                </div>
               </div>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
       </div>
     </div>

@@ -1,0 +1,83 @@
+<!-- TODO: inside of body messages does not scroll properly, other bugs too -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Socket.IO chat</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="chat.js" async></script>
+    <script src="storage.js" async></script>
+    <!-- <script src="enterForSubmit.js" async></script> -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body id="body">
+    <div class="center-form" id="popupbox">
+      <form action="" class="center effect-all-sides">
+        <div class="center">
+          <label for="name">Name: </label>
+          <input class="col-5 col-m-75" id="name" autocomplete="off" />
+          <input type="button" onclick="submitName()" value="Send" />
+        </div>
+      </form>
+    </div>
+    <!-- <span>HELLO</span> -->
+    <div class="name-overlay" id="chatbody">
+      <!-- header and title container -->
+      <div class="row row-1 effect-bottom-left">
+        <div class="col-4 col-m-25"></div>
+        <!-- title -->
+        <div class="col-8 col-m-75 effect-bottom-left">
+          <h1>Chat</h1>
+        </div>
+      </div>
+      <!-- body of app -->
+      <div class="row row-14">
+        <!-- left side of body -->
+        <div class="col-4 col-m-25 effect-right">
+          <!-- where the chats will be located -->
+          <ul>
+            <!-- <li>Hello</li>
+          <li>There</li> -->
+          </ul>
+        </div>
+        <!-- main chat -->
+        <div class="col-8 col-m-75 effect2" id="msg-container">
+          <!-- where the messages will be displayed -->
+          <ul class="message-container" id="messages">
+            <!-- <li>Howdy</li>
+          <li>Howdy</li>
+          <li>Howdy</li>
+          <li>Howdy</li>
+          <li>Howdy</li>
+          <li>Howdy</li>
+          <li>Howdy</li> -->
+          </ul>
+
+          <!-- where to input text for chat -->
+          <div class="input" id="input-div">
+            <form
+              action=""
+              class="col-8 col-m-75 row-1 input-container message-form effect-all-sides" id="form-m"
+            >
+              <!-- chat input bar -->
+              <div class="col-8 col-m-75">
+                <!-- <div class="input-item">
+              <label for="name">Name: </label>
+              <input class="col-5 col-m-75" id="name" autocomplete="off" />
+              <input type="button" onclick="submitName()" value="Send" />
+            </div> -->
+
+                <div class="input-item row-14">
+                  <textarea class="col-8 col-m-75" id="m" autocomplete="off" ></textarea>
+                  <input type="button" onclick="submitMessage()" value="Send" />
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -17,19 +17,40 @@ let hasName = false;
 //   tx[i].addEventListener("input", OnInput, false);
 // }
 
-document.getElementById("m").addEventListener("keydown", function (event) {
+// window.onload = function() {
+//   let location = 500;
+
+//   // alert("this is the location of bottom hopefully: " + location);
+//   document
+//     .getElementById("msg-container")
+//     .setAttribute("height", location + "px");
+//   document
+//     .getElementById("messages")
+//     .setAttribute("max-height", location + "px");
+//   // alert(document.getElementById("messages").getAttribute("max-height"));
+// };
+
+// window.addEventListener("resize", () => {
+//   let location = 500;
+//   // console.log("this is the location of bottom hopefully: " + location);
+//   document
+//     .getElementById("messages")
+//     .setAttribute("max-height", location + "px");
+// });
+
+document.getElementById("m").addEventListener("keydown", function(event) {
   if (event.code === "Enter") {
     submitMessage();
   }
 });
 
-document.getElementById("name").addEventListener("keydown", function (event) {
+document.getElementById("name").addEventListener("keydown", function(event) {
   if (event.code === "Enter") {
     submitName();
   }
 });
 
-document.getElementById("m").addEventListener("focus", function () {
+document.getElementById("m").addEventListener("focus", function() {
   socket.emit(
     "typing",
     document.getElementById("name").value + " is typing ..."
@@ -47,19 +68,24 @@ document.getElementById("m").addEventListener("focus", function () {
 // socket.on("connect", socket);
 
 //when name has been entered
-socket.on("entered", (name) => {
+socket.on("entered", name => {
   let message = document.createElement("li");
+  let container = document.createElement("div");
+
   message.appendChild(
     document.createTextNode(name + " has entered the chat UwU")
   );
   // message.appendChild(
   //   document.createTextNode(name + " has entered the chat UwU")
   // );
-  document.getElementById("messages").append(message);
+  message.classList.add("notification");
+  container.appendChild(message);
+  container.classList.add("message-div");
+  document.getElementById("messages").append(container);
 });
 
 //when message has been received
-socket.on("chat message", (data) => {
+socket.on("chat message", data => {
   let message = document.createElement("li");
   // let mark = document.createElement("mark");
   let brokenMessage = lineBreak(data.message);
@@ -83,10 +109,16 @@ socket.on("chat message", (data) => {
   scrollDown();
 });
 
-socket.on("typing", (msg) => {
+//when someone types in chat
+socket.on("typing", msg => {
   let message = document.createElement("li");
+  let container = document.createElement("div");
+
   message.appendChild(document.createTextNode(msg));
-  document.getElementById("messages").append(message);
+  container.appendChild(message);
+  message.classList.add("notification");
+  container.classList.add("message-div");
+  document.getElementById("messages").append(container);
 });
 
 //when message is being sent
@@ -95,7 +127,7 @@ function submitMessage() {
     event.preventDefault();
     socket.emit("chat message", {
       name: document.getElementById("name").value,
-      message: document.getElementById("m").value,
+      message: document.getElementById("m").value
     });
     document.getElementById("m").value = "";
   }
@@ -113,7 +145,7 @@ function submitName() {
 
 //scroll down
 function scrollDown() {
-  let chat = document.getElementById("msg-container");
+  let chat = document.getElementById("messages");
   chat.scrollTop = chat.scrollHeight;
 }
 
@@ -131,26 +163,33 @@ function scrollDown() {
 
 //takes messages in and breaks them up
 function lineBreak(message) {
-  let i = 0;
-  let numCharSmol = 60;
-  let numCharBig = 90;
+  // let i = 0;
+  // let numCharSmol = 60;
+  // let numCharBig = 90;
 
-  if ((message.length < 60 && screen.width < 600) || message.length < 90)
-    return message;
-  for (i; i < message.length; i++) {
-    if (i >= numCharSmol && message[i] === " " && screen.width < 600) {
-      message = message.slice(0, i) + "<br/>" + message.slice(i);
-      console.log("this is from numsmol: " + i);
-      message.length += 5;
-      numCharSmol *= 2;
-      remainder += 1;
-    } else if (i >= numCharBig && message[i] === " ") {
-      message = message.slice(0, i) + "<br/>" + message.slice(i);
-      console.log("this is from numbig: " + i);
-      message.length += 5;
-      numCharBig *= 2;
-    }
-  }
+  // if ((message.length < 60 && screen.width < 600) || message.length < 90)
+  //   return message;
+  // for (i; i < message.length; i++) {
+  //   if (i >= numCharSmol && message[i] === " " && screen.width < 600) {
+  //     message = message.slice(0, i) + "<br/>" + message.slice(i);
+  //     console.log("this is from numsmol: " + i);
+  //     message.length += 5;
+  //     numCharSmol *= 2;
+  //     remainder += 1;
+  //   } else if (i >= numCharBig && message[i] === " ") {
+  //     message = message.slice(0, i) + "<br/>" + message.slice(i);
+  //     console.log("this is from numbig: " + i);
+  //     message.length += 5;
+  //     numCharBig *= 2;
+  //   }
+  // }
   // console.log("this is the message: " + message);
   return message;
 }
+
+// function getOffset(el) {
+//   const rect = el.getBoundingClientRect();
+//   return {
+//     top: rect.top + window.scrollY
+//   };
+// }

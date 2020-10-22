@@ -16,8 +16,15 @@
     <div class="center-form" id="popupbox">
       <form action="" class="center effect-all-sides">
         <div class="center">
-          <label for="name">Name: </label>
-          <input class="col-5 col-m-75" id="name" autocomplete="off" />
+          <div class="name-div">
+            <label for="name">Name: </label>
+          </div>
+          <textarea
+            class="col-5 col-m-100"
+            id="name"
+            autocomplete="off"
+            rows= "1"
+          ></textarea>
           <input type="button" onclick="submitName()" value="Send" />
         </div>
       </form>
@@ -45,7 +52,7 @@
         <!-- main chat -->
         <div class="col-8 col-m-75 effect2" id="msg-container">
           <!-- where the messages will be displayed -->
-          <ul class="message-container" id="messages">
+          <div class="message-container" id="messages">
             <!-- <li>Howdy</li>
           <li>Howdy</li>
           <li>Howdy</li>
@@ -53,13 +60,14 @@
           <li>Howdy</li>
           <li>Howdy</li>
           <li>Howdy</li> -->
-          </ul>
+            </div>
 
           <!-- where to input text for chat -->
-          <div class="input" id="input-div">
+          <!-- <div class="input" id="input-div"> -->
             <form
               action=""
-              class="col-8 col-m-75 row-1 input-container message-form effect-all-sides" id="form-m"
+              class="col-8 col-m-75 row-1 input-container message-form effect-all-sides"
+              id="form-m"
             >
               <!-- chat input bar -->
               <div class="col-8 col-m-75">
@@ -70,12 +78,16 @@
             </div> -->
 
                 <div class="input-item row-14">
-                  <textarea class="col-8 col-m-75" id="m" autocomplete="off" ></textarea>
+                  <textarea
+                    class="col-8 col-m-75"
+                    id="m"
+                    autocomplete="off"
+                  ></textarea>
                   <input type="button" onclick="submitMessage()" value="Send" />
                 </div>
               </div>
             </form>
-          </div>
+          <!-- </div> -->
         </div>
       </div>
     </div>
